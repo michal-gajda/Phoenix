@@ -1,0 +1,9 @@
+services:
+  phoenix:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: phoenix
+    container_name: phoenix
+    ports:
+      - "5080:5080"
