@@ -13,7 +13,9 @@ RUN apt-get update && apt-get install -y curl=7.88.1-10+deb12u7 supervisor=4.2.5
 RUN groupadd -g 10000 dotnet && useradd -u 10000 -g dotnet dotnet && chown -R dotnet:dotnet /app
 USER dotnet:dotnet
 
-ENV ASPNETCORE_URLS=http://*:5080
+ENV ASPNETCORE_HTTP_PORTS=
+ENV ASPNETCORE_URLS=http://+:5080
+
 EXPOSE 5080
 
 COPY --chown=dotnet:dotnet --from=build /app/build .

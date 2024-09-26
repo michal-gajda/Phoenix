@@ -1,15 +1,23 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace Phoenix.WebApi.Controllers;
 
-[ApiController]
-[Route("[controller]")]
+using Microsoft.AspNetCore.Mvc;
+
+[ApiController, Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+    private static readonly string[] Summaries =
+    [
+        "Balmy",
+        "Bracing",
+        "Chilly",
+        "Cool",
+        "Freezing",
+        "Hot",
+        "Mild",
+        "Scorching",
+        "Sweltering",
+        "Warm",
+    ];
 
     private readonly ILogger<WeatherForecastController> _logger;
 
@@ -18,7 +26,7 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
+    [HttpGet(Name = "GetWeatherForecast"), ProducesResponseType(StatusCodes.Status200OK)]
     public IEnumerable<WeatherForecast> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
