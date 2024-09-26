@@ -5,5 +5,7 @@ services:
       dockerfile: Dockerfile
     image: phoenix
     container_name: phoenix
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "5080:5080"
