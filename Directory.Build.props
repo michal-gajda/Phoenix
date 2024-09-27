@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <Authors>Michal Gajda</Authors>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
     <ProductName>Phoenix</ProductName>
     <TargetFramework>net8.0</TargetFramework>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup>

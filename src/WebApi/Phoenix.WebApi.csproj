@@ -33,6 +33,7 @@
     <PackageReference Include="Microsoft.NETCore.Platforms" />
     <PackageReference Include="Microsoft.OpenApi" />
     <PackageReference Include="Microsoft.Win32.SystemEvents" />
+    <PackageReference Include="Winton.Extensions.Configuration.Consul" />
     <PackageReference Include="OpenTelemetry" />
     <PackageReference Include="OpenTelemetry.Api" />
     <PackageReference Include="OpenTelemetry.Api.ProviderBuilderExtensions" />
