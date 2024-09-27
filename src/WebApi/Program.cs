@@ -1,5 +1,6 @@
 namespace Phoenix.WebApi;
 
+using System.Reflection;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -15,14 +16,16 @@ public static class Program
 
         builder.Logging.AddOpenTelemetry(options =>
         {
-            options.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(SERVICE_NAME)).AddOtlpExporter();
+            options.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(SERVICE_NAME)).AddConsoleExporter().AddOtlpExporter();
         });
         builder.Services.AddOpenTelemetry()
             .ConfigureResource(resource => resource.AddService(SERVICE_NAME))
-            .WithTracing(tracing => tracing.AddAspNetCoreInstrumentation().AddOtlpExporter())
-            .WithMetrics(metrics => metrics.AddAspNetCoreInstrumentation().AddOtlpExporter());
+            .WithTracing(tracing => tracing.AddAspNetCoreInstrumentation().AddHttpClientInstrumentation().AddConsoleExporter().AddOtlpExporter())
+            .WithMetrics(metrics => metrics.AddAspNetCoreInstrumentation().AddConsoleExporter().AddOtlpExporter());
 
         builder.Services.AddHealthChecks();
+
+        builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
