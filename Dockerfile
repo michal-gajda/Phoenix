@@ -2,6 +2,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 COPY ./src .
+COPY ./Directory.Build.props .
+COPY ./Directory.Packages.props .
 
 RUN dotnet build WebApi/Phoenix.WebApi.csproj --configuration Release --output /app/build
 
@@ -13,7 +15,6 @@ RUN apt-get update && apt-get install -y curl=7.88.1-10+deb12u7 supervisor=4.2.5
 RUN groupadd -g 10000 dotnet && useradd -u 10000 -g dotnet dotnet && chown -R dotnet:dotnet /app
 USER dotnet:dotnet
 
-ENV ASPNETCORE_HTTP_PORTS=
 ENV ASPNETCORE_URLS=http://+:5080
 
 EXPOSE 5080

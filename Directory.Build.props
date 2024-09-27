@@ -1,0 +1,14 @@
+<Project>
+
+  <PropertyGroup>
+    <Authors>Michal Gajda</Authors>
+    <ProductName>Phoenix</ProductName>
+    <TargetFramework>net8.0</TargetFramework>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>IDE0290;S112;S1125;S1135;S2094;S6703;S2583;</NoWarn>
+  </PropertyGroup>
+
+</Project>
